@@ -1,53 +1,24 @@
-"use client";
 import Ellipse from "@/components/Ellipse";
 import styles from "./styles.module.css";
 import Tutorials from "@/components/Tutorials";
-import { useEffect, useRef } from "react";
 import Tag from "@/components/Tag";
+import TypeWriter from "@/components/TypeWriter";
 
-export default function Home() {
-  const topics: string[] = ["coding", "frontend", "backend", "animations"];
-  const typewriterRef = useRef<HTMLDivElement>(null);
+export default async function Home() {
 
-  function sleep(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
-  let sleepTime = 100; // (in ms)
-
-  let curTopicIndex = 0;
-
-  const writeLoop = async () => {
-    while (true) {
-      let currentTopic = topics[curTopicIndex];
-
-      for (let i = 0; i < currentTopic.length; i++) {
-        if (typewriterRef.current) {
-          typewriterRef.current.innerText = currentTopic.substring(0, i + 1);
-        }
-        await sleep(sleepTime);
-      }
-
-      await sleep(sleepTime * 10);
-
-      for (let i = currentTopic.length; i > 0; i--) {
-        if (typewriterRef.current) {
-          typewriterRef.current.innerText = currentTopic.substring(0, i - 1);
-        }
-        await sleep(sleepTime);
-      }
-
-      await sleep(sleepTime * 5);
-
-      if (curTopicIndex === topics.length - 1) {
-        curTopicIndex = 0;
-      } else {
-        curTopicIndex++;
-      }
+  const data = await fetch(
+    "http://localhost:1337/graphql",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        query: '{ now(id: "1") }',
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     }
-  };
+  ).then((res) => res.json());
 
-  writeLoop();
 
   return (
     <main className="flex min-h-screen flex-col mt-12 items-center p-10 px-14">
@@ -58,11 +29,7 @@ export default function Home() {
           </p>
           <span className="opacity-70">
             I&apos;m Malik and here are my latest explorations in{" "}
-            <span
-              ref={typewriterRef}
-              id="typewriter"
-              className="font-semibold text-[#0072ef]"
-            ></span>
+            <TypeWriter />
             <span className={styles.cursor}>|</span>
           </span>
         </div>
@@ -76,7 +43,6 @@ export default function Home() {
         <Tag name="Articles" />
         <Tag name="Videos" />
         <Tag name="Podcasts" />
-        <Tag name="Tutorials" />
         <Tag name="Frontend" />
         <Tag name="Backend" />
       </div>
