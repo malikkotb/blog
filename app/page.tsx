@@ -1,6 +1,6 @@
 import Ellipse from "@/components/Ellipse";
 import styles from "./styles.module.css";
-import Tutorials from "@/components/Tutorials";
+import Posts from "@/components/Posts";
 import Tag from "@/components/Tag";
 import TypeWriter from "@/components/TypeWriter";
 import { getClient } from "@/lib/client";
@@ -9,7 +9,7 @@ import { GET_ALL_POSTS } from "../graphql/queries";
 
 export default async function Home() {
   const { data } = await getClient().query({ query: GET_ALL_POSTS });
-  console.log(data.blogPosts.data[0]);
+  const posts = await data.blogPosts.data;
   return (
     <main className="flex min-h-screen flex-col mt-12 items-center p-10 px-14">
       <div className="">
@@ -23,7 +23,6 @@ export default async function Home() {
           </span>
         </div>
       </div>
-      <div>date: {data.blogPosts.data[0].attributes.title}</div>
 
       <div className="flex flex-wrap gap-1 my-6">
         {/* TODO: make these links to filter all tutorials by and of course tag each tutorial with >=1 tag */}
@@ -35,7 +34,7 @@ export default async function Home() {
         <Tag name="Frontend" />
         <Tag name="Backend" />
       </div>
-      <Tutorials />
+      <Posts posts={posts} />
     </main>
   );
 }
