@@ -3,23 +3,13 @@ import styles from "./styles.module.css";
 import Tutorials from "@/components/Tutorials";
 import Tag from "@/components/Tag";
 import TypeWriter from "@/components/TypeWriter";
+import { getClient } from "@/lib/client";
+
+import { GET_ALL_POSTS } from "../graphql/queries";
 
 export default async function Home() {
-
-  const data = await fetch(
-    "http://localhost:1337/graphql",
-    {
-      method: "POST",
-      body: JSON.stringify({
-        query: '{ now(id: "1") }',
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  ).then((res) => res.json());
-
-
+  const { data } = await getClient().query({ query: GET_ALL_POSTS });
+  console.log(data.blogPosts.data[0]);
   return (
     <main className="flex min-h-screen flex-col mt-12 items-center p-10 px-14">
       <div className="">
@@ -28,16 +18,15 @@ export default async function Home() {
             Welcome to my blog {<Ellipse width={36} height={36} />}
           </p>
           <span className="opacity-70">
-            I&apos;m Malik and here are my latest explorations in{" "}
-            <TypeWriter />
+            I&apos;m Malik and here are my latest explorations in <TypeWriter />
             <span className={styles.cursor}>|</span>
           </span>
         </div>
       </div>
+      <div>date: {data.blogPosts.data[0].attributes.title}</div>
 
       <div className="flex flex-wrap gap-1 my-6">
         {/* TODO: make these links to filter all tutorials by and of course tag each tutorial with >=1 tag */}
-
         <Tag name="Web Development" />
         <Tag name="Tools" />
         <Tag name="Articles" />
