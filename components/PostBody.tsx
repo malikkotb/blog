@@ -4,12 +4,32 @@ import rehypePrism from "rehype-prism-plus";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeCodeTitles from "rehype-code-titles";
 import { Code } from "bright";
+import { Code as BrightCode } from "bright";
+import moonlight from "../components/themes/moonlight.json";
+
 interface MDXComponentProps {
   children?: ReactNode;
 }
 
+const CodeWithLineNumbers = (props: any) => {
+  BrightCode.theme = {
+    dark: "github-dark",
+    light: "github-light",
+  };
+  return (
+    <div className="rounded-full">
+      {/* <div data-theme="light">
+        <BrightCode {...props} lineNumbers />;
+      </div> */}
+      <div data-theme="dark" className="rounded-full">
+        <BrightCode className=" " {...props} lineNumbers />
+      </div>
+    </div>
+  );
+};
+
 const components = {
-  pre: Code,
+  pre: CodeWithLineNumbers,
   h1: ({ children, ...props }: MDXComponentProps) => (
     <h1 {...props} className="text-3xl font-bold">
       {children}
@@ -66,11 +86,13 @@ export default function PostBody({
 }: PostBodyProps) {
   return (
     <div>
-      <div className="text-red-500">{title}</div>
-      <MDXRemote
-        source={content}
-        components={{ ...components, ...overrideComponents }}
-      />
+      <div className="p-8">
+        <div className="text-red-500">{title}</div>
+        <MDXRemote
+          source={content}
+          components={{ ...components, ...overrideComponents }}
+        />
+      </div>
     </div>
   );
 }
