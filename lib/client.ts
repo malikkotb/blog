@@ -1,11 +1,9 @@
-import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
-import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
+import { GraphQLClient, gql } from "graphql-request"
 
-export const { getClient } = registerApolloClient(() => {
-  return new ApolloClient({
-    cache: new InMemoryCache(),
-    link: new HttpLink({
-      uri: "http://localhost:1337/graphql",
-    }),
-  });
-});
+
+const graphcms = new GraphQLClient("https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clqsaudzdaxp001t6dfet7ngo/master")
+
+export default graphcms;
+
+
+

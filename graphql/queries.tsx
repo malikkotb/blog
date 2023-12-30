@@ -1,24 +1,38 @@
 import { gql } from '@apollo/client';
 
+const GET_ALL_POSTS = gql`
+query Assets {
+  posts {
+    content {
+      html
+    }
+    coverPhoto {
+      publishedAt
+      createdBy {
+        id
+      }
+      url
+    }
+    author {
+      name
+      avatar {
+        url
+      }
+    }
+    datePublished
+    id
+    slug
+    title
+    description
+  }
+}
+`
+
 const GET_ALL_SLUGS = gql`
 query {
     blogPosts {
       data {
         attributes {
-          urlSlug
-        }
-      }
-    }
-  }
-`;
-
-const GET_ALL_POSTS = gql`
-query {
-    blogPosts {
-      data {
-        attributes {
-          title
-          description
           urlSlug
         }
       }

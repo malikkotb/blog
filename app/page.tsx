@@ -3,13 +3,12 @@ import styles from "./styles.module.css";
 import Posts from "@/components/Posts";
 import Tag from "@/components/Tag";
 import TypeWriter from "@/components/TypeWriter";
-import { getClient } from "@/lib/client";
-
-import { GET_ALL_POSTS } from "../graphql/queries";
+import PostBody from "@/components/PostBody";
+import { GET_ALL_SLUGS, GET_ALL_POSTS, GET_INDIVIDUAL_POST } from "../graphql/queries";
+import graphcms from "@/lib/client";
 
 export default async function Home() {
-  const { data } = await getClient().query({ query: GET_ALL_POSTS });
-  const posts = await data.blogPosts.data;
+  const posts = await graphcms.request(GET_ALL_POSTS)
   return (
     <main className="flex min-h-screen flex-col mt-12 items-center p-10 px-14">
       <div className="">
