@@ -1,47 +1,43 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 const GET_ALL_POSTS = gql`
-query Assets {
-  posts {
-    content {
-      html
-    }
-    coverPhoto {
-      publishedAt
-      createdBy {
-        id
+  query Assets {
+    posts {
+      content {
+        html
       }
-      url
-    }
-    author {
-      name
-      avatar {
+      coverPhoto {
+        publishedAt
+        createdBy {
+          id
+        }
         url
       }
-    }
-    datePublished
-    id
-    slug
-    title
-    description
-  }
-}
-`
-
-const GET_ALL_SLUGS = gql`
-query {
-    blogPosts {
-      data {
-        attributes {
-          urlSlug
+      author {
+        name
+        avatar {
+          url
         }
       }
+      datePublished
+      id
+      slug
+      title
+      description
+    }
+  }
+`;
+
+const GET_ALL_SLUGS = gql`
+  query Assets {
+    posts {
+      slug
     }
   }
 `;
 
 const GET_INDIVIDUAL_POST = gql`
-query ($slugUrl: String!) {
+  query ($slugUrl: String!) {
     blogPosts(filters: { urlSlug: { eq: $slugUrl } }) {
       data {
         attributes {
