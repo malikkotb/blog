@@ -3,7 +3,6 @@ import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from
 import { UrlObject } from "url";
 
 export default function Posts({ posts }: any) {
-  console.log(posts.posts[0]);
   return (
     <div className="h-[200vh] w-full grid grid-cols-2">
       {posts.posts.map(

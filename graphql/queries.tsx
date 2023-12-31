@@ -36,17 +36,33 @@ const GET_ALL_SLUGS = gql`
   }
 `;
 
-const GET_INDIVIDUAL_POST = gql`
-  query ($slugUrl: String!) {
-    blogPosts(filters: { urlSlug: { eq: $slugUrl } }) {
-      data {
-        attributes {
-          title
-          content
+const GET_POST_BY_SLUG = gql`
+  query PostBySlug($slug: String!) {
+    posts(where: { slug: $slug }) {
+      content {
+        html
+      }
+      coverPhoto {
+        publishedAt
+        createdBy {
+          id
+        }
+        url
+      }
+      author {
+        name
+        avatar {
+          url
         }
       }
+      datePublished
+      id
+      slug
+      title
+      description
     }
   }
 `;
 
-export { GET_ALL_POSTS, GET_INDIVIDUAL_POST, GET_ALL_SLUGS };
+
+export { GET_ALL_POSTS, GET_POST_BY_SLUG, GET_ALL_SLUGS };

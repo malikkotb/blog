@@ -1,43 +1,34 @@
-// import PostBody from "@/components/PostBody";
-// import { GET_ALL_SLUGS, GET_ALL_POSTS, GET_INDIVIDUAL_POST } from "../graphql/queries";
-// import graphcms from "@/lib/client";
+import PostBody from "@/components/PostBody";
+import { GET_ALL_SLUGS, GET_POST_BY_SLUG } from "../../graphql/queries";
+import graphcms from "@/lib/client";
 
+// Return a list of `params` to populate the [slug] dynamic segment
+export async function generateStaticParams() {
+  const posts: any = await graphcms.request(GET_ALL_SLUGS);
+  const paths = posts.posts.map((post: { slug: any }) => ({
+    slug: post.slug,
+  }));
+  return paths;
+}
 
-// // Return a list of `params` to populate the [slug] dynamic segment
-// export async function generateStaticParams() {
-//   //const posts = await fetch('https://.../posts').then((res) => res.json())
+// Multiple versions of this page will be statically generated
+// using the `params` returned by `generateStaticParams`
+export default async function Page({ params }: { params: { slug: string } }) {
+  const { slug } = params;
+  const posts: any = await graphcms.request(GET_POST_BY_SLUG, { slug: slug });
 
-//   const posts = await graphcms.request(GET_ALL_SLUGS)
+  const post = await posts.posts[0]; // the individual post
+  const { title, content, author, datePublished, coverPhoto } = await post;
 
-//   // const { data } = await getClient().query({ query: GET_ALL_SLUGS });
-
-//   const paths = posts.map((post: { attributes: { urlSlug: any } }) => ({
-//     slug: post.attributes.urlSlug,
-//   }));
-
-//   return paths;
-// }
-
-// // Multiple versions of this page will be statically generated
-// // using the `params` returned by `generateStaticParams`
-// export default async function Page({ params }: { params: { slug: string } }) {
-//   const { slug } = params;
-//   const posts = await graphcms.request(GET_INDIVIDUAL_POST)
-
-//   // const { data } = await getClient().query({
-//   //   query: GET_INDIVIDUAL_POST,
-//   //   variables: {
-//   //     slugUrl: slug,
-//   //   },
-//   // });
-//   const post = await data.blogPosts.data[0];
-//   const title = post.attributes.title;
-//   const content = await post.attributes.content;
-  
-
-//   return (
-//     <div>
-//       <PostBody title={title} content={content} />
-//     </div>
-//   );
-// }
+  return (
+    <div>
+      <PostBody
+        title={title}
+        content={content.html}
+        coverPhotoSrc={coverPhoto?.url}
+        author={author.name}
+        avatar={author.avatar.url}
+      />
+    </div>
+  );
+}

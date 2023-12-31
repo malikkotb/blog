@@ -1,11 +1,8 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { ReactNode } from "react";
-import rehypePrism from "rehype-prism-plus";
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeCodeTitles from "rehype-code-titles";
-import { Code } from "bright";
 import { Code as BrightCode } from "bright";
 import moonlight from "../components/themes/moonlight.json";
+import Image from "next/image";
 
 interface MDXComponentProps {
   children?: ReactNode;
@@ -77,17 +74,28 @@ interface PostBodyProps {
   components?: { [key: string]: React.ComponentType<MDXComponentProps> };
   content: string;
   title: string;
+  coverPhotoSrc: string;
+  author: string;
+  avatar: string;
 }
 
 export default function PostBody({
   title,
   content,
   components: overrideComponents,
+  coverPhotoSrc,
+  author,
+  avatar
 }: PostBodyProps) {
   return (
     <div>
       <div className="p-8">
+        <div className="">
+            {author}
+            <Image src={avatar} width={50} height={50} alt="avatar" className="rounded-full" />
+        </div>
         <div className="text-red-500">{title}</div>
+        <Image src={coverPhotoSrc} width={300} height={300} alt="cover photo" />
         <MDXRemote
           source={content}
           components={{ ...components, ...overrideComponents }}
