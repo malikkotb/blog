@@ -11,7 +11,7 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col mt-12 items-center p-10 px-14">
       <div className="">
-        <div className=" text-[3vw] font-medium my-8 items-center text-center flex flex-col">
+        <div className="text-lg sm:text-[3vw] font-medium my-8 items-center text-center flex flex-col">
           <p className="flex gap-2 items-center">
             Welcome to my blog {<Ellipse width={36} height={36} />}
           </p>

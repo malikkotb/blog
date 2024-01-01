@@ -41,6 +41,7 @@ const GET_POST_BY_SLUG = gql`
     posts(where: { slug: $slug }) {
       content {
         html
+        markdown
       }
       coverPhoto {
         publishedAt

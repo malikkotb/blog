@@ -19,15 +19,15 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   const post = await posts.posts[0]; // the individual post
   const { title, content, author, datePublished, coverPhoto } = await post;
-
   return (
     <div>
       <PostBody
         title={title}
-        content={content.html}
+        content={content.markdown}
         coverPhotoSrc={coverPhoto?.url}
         author={author.name}
         avatar={author.avatar.url}
+        datePublished={datePublished}
       />
     </div>
   );

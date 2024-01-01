@@ -4,7 +4,7 @@ import { UrlObject } from "url";
 
 export default function Posts({ posts }: any) {
   return (
-    <div className="h-[200vh] w-full grid grid-cols-2">
+    <div className="h-[200vh] w-full grid grid-cols-1 sm:grid-cols-2">
       {posts.posts.map(
         (post: {
           datePublished: ReactNode; slug: string | UrlObject; id: Key | null | undefined; title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; description: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; 

@@ -1,8 +1,11 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
+
 import { ReactNode } from "react";
 import { Code as BrightCode } from "bright";
 import moonlight from "../components/themes/moonlight.json";
 import Image from "next/image";
+import { remark } from "remark";
+import html from "remark-html";
 
 interface MDXComponentProps {
   children?: ReactNode;
@@ -77,7 +80,12 @@ interface PostBodyProps {
   coverPhotoSrc: string;
   author: string;
   avatar: string;
+  datePublished: string;
 }
+
+import React from "react";
+import { createRoot } from "react-dom/client";
+import Markdown from "react-markdown";
 
 export default function PostBody({
   title,
@@ -85,17 +93,26 @@ export default function PostBody({
   components: overrideComponents,
   coverPhotoSrc,
   author,
-  avatar
+  avatar,
+  datePublished,
 }: PostBodyProps) {
   return (
     <div>
       <div className="p-8">
         <div className="">
-            {author}
-            <Image src={avatar} width={50} height={50} alt="avatar" className="rounded-full" />
+          {author}
+          <Image
+            src={avatar}
+            width={50}
+            height={50}
+            alt="avatar"
+            className="rounded-full"
+          />
+          {datePublished}
         </div>
         <div className="text-red-500">{title}</div>
         <Image src={coverPhotoSrc} width={300} height={300} alt="cover photo" />
+
         <MDXRemote
           source={content}
           components={{ ...components, ...overrideComponents }}
