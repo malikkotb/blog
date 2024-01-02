@@ -1,17 +1,14 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
-
 import { ReactNode } from "react";
 import { Code as BrightCode } from "bright";
-import moonlight from "../components/themes/moonlight.json";
+import moonlight from "./themes/moonlight.json";
 import Image from "next/image";
-import { remark } from "remark";
-import html from "remark-html";
 
 interface MDXComponentProps {
   children?: ReactNode;
 }
 
-const CodeWithLineNumbers = (props: any) => {
+const CodeWithLineNumbers = ({ children, ...props }: MDXComponentProps) => {
   BrightCode.theme = {
     dark: "github-dark",
     light: "github-light",
@@ -22,7 +19,7 @@ const CodeWithLineNumbers = (props: any) => {
         <BrightCode {...props} lineNumbers />;
       </div> */}
       <div data-theme="dark" className="rounded-full">
-        <BrightCode className=" " {...props} lineNumbers />
+        <BrightCode className=" " {...props} lineNumbers>{children}</BrightCode>
       </div>
     </div>
   );
@@ -30,6 +27,11 @@ const CodeWithLineNumbers = (props: any) => {
 
 const components = {
   pre: CodeWithLineNumbers,
+//   code: ({ children, ...props }: MDXComponentProps) => (
+//     <code {...props} className="bg-red-500">
+//       {children}
+//     </code>
+//   ),
   h1: ({ children, ...props }: MDXComponentProps) => (
     <h1 {...props} className="text-3xl font-bold">
       {children}
@@ -77,18 +79,16 @@ interface PostBodyProps {
   components?: { [key: string]: React.ComponentType<MDXComponentProps> };
   content: string;
   title: string;
+  subtitle: string;
   coverPhotoSrc: string;
   author: string;
   avatar: string;
   datePublished: string;
 }
 
-import React from "react";
-import { createRoot } from "react-dom/client";
-import Markdown from "react-markdown";
-
 export default function PostBody({
   title,
+  subtitle,
   content,
   components: overrideComponents,
   coverPhotoSrc,
@@ -111,8 +111,8 @@ export default function PostBody({
           {datePublished}
         </div>
         <div className="text-red-500">{title}</div>
+        <div className="text-red-500">{subtitle}</div>
         <Image src={coverPhotoSrc} width={300} height={300} alt="cover photo" />
-
         <MDXRemote
           source={content}
           components={{ ...components, ...overrideComponents }}

@@ -60,6 +60,7 @@ const GET_POST_BY_SLUG = gql`
       id
       slug
       title
+      subtitle
       description
     }
   }

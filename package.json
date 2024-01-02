@@ -35,6 +35,7 @@
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.0",
     "remark-html": "^16.0.1",
+    "sass": "^1.69.6",
     "shikiji": "^0.9.0",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7"
