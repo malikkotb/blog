@@ -11,18 +11,18 @@ import Image from "next/image";
 
 const convertDateFormat = (dateStr: string): string => {
   const dateObj = new Date(dateStr);
-  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' };
-  return dateObj.toLocaleDateString('en-US', options);
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+  return dateObj.toLocaleDateString("en-US", options);
 };
-
-const dateExample = "2023-12-31";
-const convertedDate = convertDateFormat(dateExample);
-console.log(convertedDate);
 
 export default function Posts({ posts }: any) {
   return (
     // <div className="w-full flex flex-col sm:flex-wrap gap-6 sm:gap-8">
-    <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+    <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
       {posts.posts.map(
         (post: {
           coverPhoto: any;
@@ -51,44 +51,32 @@ export default function Posts({ posts }: any) {
           const { title, description, datePublished, coverPhoto } = post;
 
           return (
-            <Link
-              className="flex flex-col h-[45vh] p-2 rounded-2xl"
-              href={post.slug}
+            <div
+              className="flex flex-col h-[45vh] p-2 gap-2 rounded-2xl"
               key={post.id}
             >
               <div className="w-full h-[18vw]">
                 <img
                   src={coverPhoto.url}
-                  className="w-full h-full rounded-xl object-cover"
+                  className="w-full h-full rounded-xl object-cover hover:translate-y-[-10px] transform transition-all duration-300"
                   alt="description"
                 />
               </div>
-              {/* <div className="items-center flex">
-                <img
-                  src={coverPhoto.url}
-                  className="h-[18vw] w-[25vw] rounded-xl object-cover"
-                  alt="description"
-                />
-              </div> */}
-
-              <h3 className="text-xl">{title}</h3>
-              <p className="text-sm opacity-70">{convertDateFormat(datePublished as string)}</p>
-              <p className=" overflow-y-hidden">{description}</p>
-            </Link>
+              <p className="text-sm opacity-70">
+                {convertDateFormat(datePublished as string)}
+              </p>
+              <div>
+                <Link href={post.slug} className="hover:underline text-xl font-bold">
+                  {title}
+                </Link>
+                <p className="overflow-y-hidden text-sm opacity-70">
+                  {description}
+                </p>
+              </div>
+            </div>
           );
         }
       )}
     </div>
   );
-}
-
-{
-  /* <Image
-                src={coverPhoto?.url}
-                width={300}
-                height={200}
-                alt="cover photo"
-                style={{ objectFit: "fill" }}
-                sizes="(max-width: 300) 100vw, 33vw"
-              /> */
 }

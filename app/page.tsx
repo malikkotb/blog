@@ -3,11 +3,19 @@ import styles from "./styles.module.css";
 import Posts from "@/components/Posts";
 import Tag from "@/components/Tag";
 import TypeWriter from "@/components/TypeWriter";
-import { GET_ALL_POSTS } from "../graphql/queries";
+import { GET_ALL_POSTS, GET_TAGS } from "../graphql/queries";
 import graphcms from "@/lib/client";
+import {
+  ReactElement,
+  JSXElementConstructor,
+  ReactNode,
+  ReactPortal,
+} from "react";
+import Tags from "@/components/Tags";
 
 export default async function Home() {
   const posts = await graphcms.request(GET_ALL_POSTS);
+  const tags: any = await graphcms.request(GET_TAGS);
   return (
     <main className="flex min-h-screen flex-col mt-12 items-center p-10 px-14">
       <div className="">
@@ -21,17 +29,7 @@ export default async function Home() {
           </span>
         </div>
       </div>
-
-      <div className="flex flex-wrap gap-1 my-6">
-        {/* TODO: make these links to filter all tutorials by and of course tag each tutorial with >=1 tag */}
-        <Tag name="Web Development" />
-        <Tag name="Tools" />
-        <Tag name="Articles" />
-        <Tag name="Videos" />
-        <Tag name="Podcasts" />
-        <Tag name="Frontend" />
-        <Tag name="Backend" />
-      </div>
+      <Tags tags={tags} />
       <Posts posts={posts} />
     </main>
   );

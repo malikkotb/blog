@@ -22,11 +22,22 @@ const GET_ALL_POSTS = gql`
       datePublished
       id
       slug
+      tags {
+        name
+      }
       title
       description
     }
   }
 `;
+
+const GET_TAGS = gql`
+query MyQuery {
+  tags {
+    name
+  }
+}
+`
 
 const GET_ALL_SLUGS = gql`
   query Assets {
@@ -60,6 +71,9 @@ const GET_POST_BY_SLUG = gql`
       id
       slug
       title
+      tags {
+        name
+      }
       subtitle
       description
     }
@@ -67,4 +81,4 @@ const GET_POST_BY_SLUG = gql`
 `;
 
 
-export { GET_ALL_POSTS, GET_POST_BY_SLUG, GET_ALL_SLUGS };
+export { GET_ALL_POSTS, GET_POST_BY_SLUG, GET_ALL_SLUGS, GET_TAGS };
