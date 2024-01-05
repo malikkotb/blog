@@ -22,31 +22,15 @@ const convertDateFormat = (dateStr: string): string => {
 export default function Posts({ posts }: any) {
   return (
     // <div className="w-full flex flex-col sm:flex-wrap gap-6 sm:gap-8">
-    <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+    <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 sm:gap-2">
       {posts.posts.map(
         (post: {
           coverPhoto: any;
           datePublished: ReactNode;
           slug: string | UrlObject;
           id: Key | null | undefined;
-          title:
-            | string
-            | number
-            | boolean
-            | ReactElement<any, string | JSXElementConstructor<any>>
-            | Iterable<ReactNode>
-            | ReactPortal
-            | null
-            | undefined;
-          description:
-            | string
-            | number
-            | boolean
-            | ReactElement<any, string | JSXElementConstructor<any>>
-            | Iterable<ReactNode>
-            | ReactPortal
-            | null
-            | undefined;
+          title: string;
+          description: string;
         }) => {
           const { title, description, datePublished, coverPhoto } = post;
 
