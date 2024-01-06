@@ -1,20 +1,17 @@
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button"
+
 import Image from "next/image";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 export default function Footer() {
   return (
-    <div className="h-[40vh] opacity-70">
+    <div className="h-[30vh] sm:h-[50vh] opacity-70">
       <hr className="h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100" />
-      <div className="py-8 flex flex-col w-full items-center gap-4 ">
+      <div className="py-8 flex flex-col w-full items-center gap-4 pt-14">
         {/* links/buttons to: tutorials, demos, About:portfolio page,  */}
         <div className="flex gap-4">
-          <Button variant={"outline"} className="">
-            TUTORIALS <ArrowTopRightIcon />
-          </Button>
-          <Button variant={"outline"} className="">
-            PORTFOLIO <ArrowTopRightIcon />
-          </Button>
+        <Link href={"https://github.com/malikkotb"} target="_blank" className={buttonVariants({ variant: "outline" })}>GITHUB <ArrowTopRightIcon /></Link>
+        <Link href={"https://malikkotb.github.io/m-k.io/"} target="_blank" className={buttonVariants({ variant: "outline" })}>PORTFOLIO <ArrowTopRightIcon /></Link>
         </div>
         <p className="text-[2.5vw] font-medium leading-none text-center">
           Things for creative devs <br />
