@@ -16,9 +16,9 @@ export default function Footer() {
             PORTFOLIO <ArrowTopRightIcon />
           </Button>
         </div>
-        <p className="text-[2.5vw] font-bold leading-none text-center">
+        <p className="text-[2.5vw] font-medium leading-none text-center">
           Things for creative devs <br />
-          <span className="text-slate-600">sent to your inbox every week.</span>
+          <span className="text-slate-600">sent to your inbox every week</span>
         </p>
         <div className="flex gap-2">
           <input
@@ -26,7 +26,7 @@ export default function Footer() {
             placeholder="Your email"
             className="rounded-xl border p-3 w-[30vw]"
           />
-          <button className="bg-black text-white p-4 rounded-xl">Submit</button>
+          <button className="bg-black text-white p-4 rounded-xl z-30">Submit</button>
         </div>
       </div>
     </div>

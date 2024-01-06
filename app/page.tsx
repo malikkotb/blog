@@ -11,7 +11,7 @@ export default async function Home() {
   const posts = await graphcms.request(GET_ALL_POSTS);
   const tags = await graphcms.request(GET_TAGS);
   return (
-    <main className="flex min-h-screen flex-col mt-12 items-center p-10 px-14">
+    <main className="flex min-h-screen flex-col mt-12 items-center p-10">
       <div className="">
         <div className="text-lg sm:text-[2.5vw] font-medium my-2 lg:my-8 items-center text-center flex flex-col">
           <p className="flex gap-2 items-center">
