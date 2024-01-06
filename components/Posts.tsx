@@ -5,15 +5,7 @@ import { HiMiniArrowUpRight } from "react-icons/hi2";
 import { UrlObject } from "url";
 import useStore from "@/app/(store)/store";
 
-const convertDateFormat = (dateStr: string): string => {
-  const dateObj = new Date(dateStr);
-  const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  };
-  return dateObj.toLocaleDateString("en-US", options);
-};
+
 
 export default function Posts({ posts }: any) {
 
@@ -55,9 +47,6 @@ export default function Posts({ posts }: any) {
                 />
               </div>
               <div className="items-start flex flex-col gap-1 p-4 pb-2">
-                {/* <p className="text-sm opacity-70">
-                  {convertDateFormat(datePublished as string)}
-                </p> */}
                 <div className="text-base font-medium">{title}</div>
                 <div className="flex w-full justify-between">
                   <p className="overflow-y-hidden text-xs opacity-60">

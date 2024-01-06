@@ -8,6 +8,16 @@ interface MDXComponentProps {
   children?: ReactNode;
 }
 
+const convertDateFormat = (dateStr: string): string => {
+  const dateObj = new Date(dateStr);
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+  return dateObj.toLocaleDateString("en-US", options);
+};
+
 const CodeWithLineNumbers = ({ children, ...props }: MDXComponentProps) => {
   BrightCode.theme = {
     dark: "github-dark",
@@ -19,7 +29,9 @@ const CodeWithLineNumbers = ({ children, ...props }: MDXComponentProps) => {
         <BrightCode {...props} lineNumbers />;
       </div> */}
       <div data-theme="dark" className="rounded-full">
-        <BrightCode className=" " {...props} lineNumbers>{children}</BrightCode>
+        <BrightCode className=" " {...props} lineNumbers>
+          {children}
+        </BrightCode>
       </div>
     </div>
   );
@@ -27,11 +39,11 @@ const CodeWithLineNumbers = ({ children, ...props }: MDXComponentProps) => {
 
 const components = {
   pre: CodeWithLineNumbers,
-//   code: ({ children, ...props }: MDXComponentProps) => (
-//     <code {...props} className="bg-red-500">
-//       {children}
-//     </code>
-//   ),
+  //   code: ({ children, ...props }: MDXComponentProps) => (
+  //     <code {...props} className="bg-red-500">
+  //       {children}
+  //     </code>
+  //   ),
   h1: ({ children, ...props }: MDXComponentProps) => (
     <h1 {...props} className="text-3xl font-bold">
       {children}
@@ -97,27 +109,32 @@ export default function PostBody({
   datePublished,
 }: PostBodyProps) {
   return (
-    <div>
-      <div className="p-8">
-        <div className="">
-          {author}
-          <Image
-            src={avatar}
-            width={50}
-            height={50}
-            alt="avatar"
-            className="rounded-full"
-          />
-          {datePublished}
-        </div>
-        <div className="text-red-500">{title}</div>
-        <div className="text-red-500">{subtitle}</div>
-        <Image src={coverPhotoSrc} width={300} height={300} alt="cover photo" />
-        <MDXRemote
-          source={content}
-          components={{ ...components, ...overrideComponents }}
+    <div className="p-8 px-40">
+      <div className="flex gap-2">
+        <Image
+          src={avatar}
+          width={50}
+          height={50}
+          alt="avatar"
+          className="rounded-full"
         />
+        <div className="">
+          <p className="opacity-80">{author}</p>
+          <p className="text-xs opacity-80">
+            {convertDateFormat(datePublished as string)} / Beginner / Short
+          </p>
+        </div>
       </div>
+      <div className="my-4">
+        <div className="font-medium text-2xl">{title}</div>
+        <div className="">{subtitle}</div>
+      </div>
+      <video className="rounded-lg" src="./beach_vid.mp4"></video>
+      {/* <Image src={coverPhotoSrc} width={300} height={300} alt="cover photo" /> */}
+      <MDXRemote
+        source={content}
+        components={{ ...components, ...overrideComponents }}
+      />
     </div>
   );
 }
