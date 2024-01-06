@@ -39,7 +39,8 @@
     "sass": "^1.69.6",
     "shikiji": "^0.9.0",
     "tailwind-merge": "^2.2.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@types/node": "^20",

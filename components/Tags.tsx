@@ -4,9 +4,9 @@ export default function Tags(tags: any) {
   // console.log(tags.tags.tags[0]);
   return (
     <div className="flex flex-wrap gap-2 my-6">
-      {/* TODO: make these links to filter all tutorials by and of course tag each tutorial with >=1 tag */}
+      <Tag name="All" />
       {tags.tags.tags.map((tag: { name: string }) => {
-        return <Tag key={tag.name} name={tag.name} />;
+        return <Tag key={tag.name} name={tag.name} />
       })}
     </div>
   );

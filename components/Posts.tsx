@@ -1,8 +1,9 @@
+"use client"
 import Link from "next/link";
 import { ReactNode, Key } from "react";
 import { HiMiniArrowUpRight } from "react-icons/hi2";
 import { UrlObject } from "url";
-import { useState } from "react";
+import useStore from "@/app/(store)/store";
 
 const convertDateFormat = (dateStr: string): string => {
   const dateObj = new Date(dateStr);
@@ -16,12 +17,13 @@ const convertDateFormat = (dateStr: string): string => {
 
 export default function Posts({ posts }: any) {
 
-  const filterExmp = "3D";
+  const { filteredTag } = useStore();
+
 
   return (
     <div className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
       {posts.posts
-      .filter((post: { tags: any; }) => post.tags[0].name.includes(filterExmp))
+      .filter((post: { tags: any; }) => post.tags[0].name.includes(filteredTag))
       .map(
         (post: {
           tags: any;
@@ -37,7 +39,7 @@ export default function Posts({ posts }: any) {
           return (
             <Link
               href={post.slug}
-              className="h-[45vh] group md:h-[65vh] flex flex-col p-2 gap-2 rounded-3xl bg-[#F7F7F1] hover:translate-y-[-2px] transform transition-all duration-300"
+              className="h-[45vh] group md:h-[65vh] flex flex-col p-2 gap-2 rounded-3xl bg-[#F7F7F1] dark:bg-slate-900 hover:translate-y-[-2px] transform transition-all duration-300"
               key={post.id}
             >
               <div className="justify-end flex w-full">
