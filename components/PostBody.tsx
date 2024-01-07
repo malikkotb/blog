@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import { Code as BrightCode } from "bright";
 import moonlight from "./themes/moonlight.json";
 import Image from "next/image";
-
+import VideoComp from "./VideoComp";
 interface MDXComponentProps {
   children?: ReactNode;
 }
@@ -129,7 +129,8 @@ export default function PostBody({
         <div className="font-medium text-2xl">{title}</div>
         <div className="">{subtitle}</div>
       </div>
-      <video className="rounded-lg" src="./beach_vid.mp4"></video>
+      <VideoComp />
+      
       {/* <Image src={coverPhotoSrc} width={300} height={300} alt="cover photo" /> */}
       <MDXRemote
         source={content}
