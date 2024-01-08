@@ -1,34 +1,33 @@
 import { gql } from "@apollo/client";
 
 const GET_ALL_POSTS = gql`
-  query Assets {
-    posts {
-      content {
-        html
+query Assets {
+  posts {
+    coverPhoto {
+      publishedAt
+      createdBy {
+        id
       }
-      coverPhoto {
-        publishedAt
-        createdBy {
-          id
-        }
+      url
+    }
+    author {
+      name
+      avatar {
         url
       }
-      author {
-        name
-        avatar {
-          url
-        }
-      }
-      datePublished
-      id
-      slug
-      tags {
-        name
-      }
-      title
-      description
     }
+    datePublished
+    id
+    slug
+    tags {
+      name
+    }
+    title
+    description
+    mdContent
   }
+}
+
 `;
 
 const GET_TAGS = gql`
@@ -50,10 +49,6 @@ const GET_ALL_SLUGS = gql`
 const GET_POST_BY_SLUG = gql`
   query PostBySlug($slug: String!) {
     posts(where: { slug: $slug }) {
-      content {
-        html
-        markdown
-      }
       coverPhoto {
         publishedAt
         createdBy {
@@ -76,6 +71,7 @@ const GET_POST_BY_SLUG = gql`
       }
       subtitle
       description
+      mdContent
     }
   }
 `;

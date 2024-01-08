@@ -18,13 +18,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const posts: any = await graphcms.request(GET_POST_BY_SLUG, { slug: slug });
 
   const post = await posts.posts[0]; // the individual post
-  const { title, content, author, datePublished, coverPhoto, subtitle, description } = await post;
+  const { title, author, datePublished, coverPhoto, subtitle, description, mdContent } = await post;
   return (
     <div>
       <PostBody
         title={title}
         subtitle={subtitle}
-        content={content.markdown}
+        mdContent={mdContent}
         coverPhotoSrc={coverPhoto?.url}
         author={author.name}
         avatar={author.avatar.url}

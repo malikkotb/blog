@@ -31,7 +31,7 @@ export default function Posts({ posts }: any) {
           return (
             <Link
               href={post.slug}
-              className="h-[45vh] group md:h-[65vh] flex flex-col p-2 gap-2 rounded-3xl bg-[#F7F7F1] dark:bg-slate-900 hover:translate-y-[-2px] transform transition-all duration-300"
+              className="h-[45vh] group md:h-[65vh] flex flex-col p-2 gap-2 rounded-3xl bg-[#c6d492] bg-opacity-40 dark:bg-slate-900 hover:translate-y-[-2px] transform transition-all duration-300"
               key={post.id}
             >
               <div className="justify-end flex w-full">

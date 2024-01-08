@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className={`${inter.className} max-w-[1400px] mx-auto`}>
+      <body suppressHydrationWarning className={`${inter.className} max-w-[1400px] mx-auto bg-custom-light dark:bg-custom-dark text-custom-light dark:text-custom-dark`}>
       <ThemeProvider
           attribute="class"
           defaultTheme="system"

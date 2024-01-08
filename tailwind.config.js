@@ -17,6 +17,15 @@ module.exports = {
       },
     },
     extend: {
+      backgroundColor: '#05101A',
+      backgroundColor: {
+        'custom-light': '#f5f5f5', // Light mode background color
+        'custom-dark': '#0a0a0a', // Dark mode background color
+      },
+      textColor: {
+        'custom-light': '#140606', // Light mode text color
+        'custom-dark': '#f9ebeb', // Dark mode text color
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
