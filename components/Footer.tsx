@@ -1,4 +1,4 @@
-import { buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button";
 
 import Image from "next/image";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
@@ -10,12 +10,26 @@ export default function Footer() {
       <div className="py-8 flex flex-col w-full items-center gap-4 pt-14">
         {/* links/buttons to: tutorials, demos, About:portfolio page,  */}
         <div className="flex gap-4">
-        <Link href={"https://github.com/malikkotb"} target="_blank" className={buttonVariants({ variant: "outline" })}>GITHUB <ArrowTopRightIcon /></Link>
-        <Link href={"https://malikkotb.github.io/m-k.io/"} target="_blank" className={buttonVariants({ variant: "outline" })}>PORTFOLIO <ArrowTopRightIcon /></Link>
+          <Link
+            href={"https://github.com/malikkotb"}
+            target="_blank"
+            className={buttonVariants({ variant: "outline" })}
+          >
+            GITHUB <ArrowTopRightIcon />
+          </Link>
+          <Link
+            href={"https://malikkotb.github.io/m-k.io/"}
+            target="_blank"
+            className={buttonVariants({ variant: "outline" })}
+          >
+            PORTFOLIO <ArrowTopRightIcon />
+          </Link>
         </div>
         <p className="text-[2.5vw] font-medium leading-none text-center">
           Things for creative devs <br />
-          <span className="text-slate-600">sent to your inbox every week</span>
+          <span className="text-custom-light dark:text-custom-dark ">
+            sent to your inbox every week
+          </span>
         </p>
         <div className="flex gap-2">
           <input
@@ -23,7 +37,9 @@ export default function Footer() {
             placeholder="Your email"
             className="rounded-xl border p-3 w-[30vw]"
           />
-          <button className="bg-black text-white p-4 rounded-xl z-30">Submit</button>
+          <button className="bg-custom-dark text-custom-dark dark:bg-custom-light dark:text-custom-light p-4 rounded-xl">
+            Submit
+          </button>
         </div>
       </div>
     </div>

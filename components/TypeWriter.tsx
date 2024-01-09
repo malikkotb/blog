@@ -46,6 +46,6 @@ export default function TypeWriter() {
   writeLoop();
 
   return (
-    <span ref={typewriterRef} className="font-semibold md:my-4 text-[#0072ef]"></span>
+    <span ref={typewriterRef} className="font-semibold md:my-4 text-[#0900f9]"></span>
   );
 }

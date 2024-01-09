@@ -17,7 +17,7 @@ export default function Tag({ name }: TagProps) {
   }
 
   return (
-    <button onClick={() => tagClickHandler(name)} className="cursor-pointer hover:border-opacity-100 border-opacity-60  px-4 border border-rose-300 py-1.5 rounded-2xl text-sm whitespace-nowrap">
+    <button onClick={() => tagClickHandler(name)} className="cursor-pointer hover:border-opacity-100 border-opacity-40  px-4 border border-slate-400 py-1.5 rounded-2xl text-sm whitespace-nowrap">
       {name}
     </button>
   );

@@ -1,13 +1,13 @@
 import { ModeToggle } from "./ModeToggle";
 
-import Ellipse from "./Ellipse";
 import Link from "next/link";
+import Image from "next/image";
 export default function Header() {
   return (
     <div>
       <nav className="px-5 py-4 items-center mx-auto flex justify-between w-full">
         <Link href={"/"}>
-          <Ellipse width={36} height={36} />
+          <Image alt="logo" width={36} height={36} src={"./Ellipse.png"} />
         </Link>
         <ModeToggle />
       </nav>
