@@ -35,17 +35,17 @@ const markdownCompts = {
       </h1>
     ),
     h2: ({ children, ...props }: MDXComponentProps) => (
-      <h2 {...props} className="text-xl font-medium">
+      <h2 {...props} className="text-xl font-medium mt-[30px] mb-[16px]">
         {children}
       </h2>
     ),
     h3: ({ children, ...props }: MDXComponentProps) => (
-      <h3 {...props} className="text-lg font-medium">
+      <h3 {...props} className="text-lg font-medium my-[18px]">
         {children}
       </h3>
     ),
     p: ({ children, ...props }: MDXComponentProps) => (
-      <p {...props} className="text-base">
+      <p {...props} className="text-base mt-[10px] mb-[30px] opacity-75">
         {children}
       </p>
     ),
@@ -60,7 +60,7 @@ const markdownCompts = {
       </ul>
     ),
     li: ({ children, ...props }: MDXComponentProps) => (
-      <li {...props} className="ml-4">
+      <li {...props} className="ml-4 opacity-75">
         {children}
       </li>
     ),
