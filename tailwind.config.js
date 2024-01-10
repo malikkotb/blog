@@ -19,7 +19,7 @@ module.exports = {
     extend: {
       backgroundColor: {
         'custom-light': '#fbfbfe', // Light mode background color
-        'custom-dark': '#010104', // Dark mode background color
+        'custom-dark': '#15171B', // Dark mode background color
       },
       textColor: {
         'custom-light': '#040316', // Light mode text color

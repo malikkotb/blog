@@ -1,20 +1,21 @@
 import { ReactNode } from "react";
 import { Code as BrightCode } from "bright";
+import dark_plus from "./themes/dark_plus.json"
 interface MDXComponentProps {
   children?: ReactNode;
 }
 const CodeWithLineNumbers = ({ children, ...props }: MDXComponentProps) => {
-    BrightCode.theme = {
-      dark: "github-dark",
-      light: "github-light",
-    };
+    // BrightCode.theme = {
+    //   dark: "github-dark",
+    //   light: "github-light",
+    // };
     return (
       <div className="rounded-full">
         {/* <div data-theme="light">
           <BrightCode {...props} lineNumbers />;
         </div> */}
         <div data-theme="dark" className="rounded-full">
-          <BrightCode className=" " {...props} lineNumbers>
+          <BrightCode theme={dark_plus} className=" " {...props} lineNumbers>
             {children}
           </BrightCode>
         </div>
@@ -45,7 +46,7 @@ const markdownCompts = {
       </h3>
     ),
     p: ({ children, ...props }: MDXComponentProps) => (
-      <p {...props} className="text-base mt-[10px] mb-[30px] opacity-75">
+      <p {...props} className="text-base leading-5 mt-[10px] mb-[30px] opacity-75">
         {children}
       </p>
     ),
