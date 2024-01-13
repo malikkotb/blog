@@ -43,7 +43,7 @@ export default function PostBody({
   description,
 }: PostBodyProps) {
   return (
-    <div className="p-8 px-40 mt-10">
+    <div className="p-8 px-12 md:px-40 md:mt-4">
       <Link href={"/"} className="">
         <p className="my-6 text-sm flex items-center gap-2 opacity-80">
           <ArrowLeftIcon />
@@ -60,8 +60,8 @@ export default function PostBody({
         />
         <div className="">
           <p className="opacity-80">{author}</p>
-          <p className="text-xs opacity-80">
-            {convertDateFormat(datePublished as string)} / Beginner / Short
+          <p className="text-xs opacity-80 flex gap-1">
+            {convertDateFormat(datePublished as string)} / <span className="p-2 bg-green-700 rounded-full"></span> Beginner / Short
           </p>
         </div>
       </div>
@@ -73,8 +73,9 @@ export default function PostBody({
       </div>
       <p className="pt-2 pb-4">{description}</p>
       <div className="flex gap-2">
-        <Button variant="outline">Live Demo <ArrowTopRightIcon className="ml-1" /></Button>
-        <Button variant="outline">Source Code <ArrowTopRightIcon className="ml-1" /></Button>
+        {/* TODO: add links to live demo and source code (github) which can be imported from hygraph as props */}
+        <button className="flex gap-1 rounded-lg bg-[#0900f9] bg-opacity-5 text-opacity-65 text-[#0900f9] px-4 py-2 font-medium items-center">Live Demo <ArrowTopRightIcon className="ml-1" /></button>
+        <button className="flex gap-1 rounded-lg bg-[#0900f9] bg-opacity-5 text-opacity-65 text-[#0900f9] px-4 py-2 font-medium items-center">Source Code <ArrowTopRightIcon className="ml-1" /></button>
 
       </div>
       <VideoComp />
