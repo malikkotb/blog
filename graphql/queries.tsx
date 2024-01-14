@@ -25,6 +25,10 @@ query Assets {
     title
     description
     mdContent
+    subtitle
+    demoVideo {
+      url
+    }
   }
 }
 
@@ -72,6 +76,9 @@ const GET_POST_BY_SLUG = gql`
       subtitle
       description
       mdContent
+      demoVideo {
+        url
+      }
     }
   }
 `;

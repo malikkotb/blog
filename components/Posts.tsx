@@ -5,8 +5,6 @@ import { HiMiniArrowUpRight } from "react-icons/hi2";
 import { UrlObject } from "url";
 import useStore from "@/app/(store)/store";
 
-
-
 export default function Posts({ posts }: any) {
 
   const { filteredTag } = useStore();
@@ -25,8 +23,9 @@ export default function Posts({ posts }: any) {
           id: Key | null | undefined;
           title: string;
           description: string;
+          subtitle: string
         }) => {
-          const { title, description, datePublished, coverPhoto } = post;
+          const { title, subtitle, description, datePublished, coverPhoto } = post;
 
           return (
             <Link
@@ -50,7 +49,7 @@ export default function Posts({ posts }: any) {
                 <div className="text-base font-medium">{title}</div>
                 <div className="flex w-full justify-between">
                   <p className="overflow-y-hidden text-xs opacity-60">
-                    {description}
+                    {subtitle}
                   </p>
                   <button className="rounded-full text-xs bg-white text-black px-3 py-1">
                     {post.tags[0].name}

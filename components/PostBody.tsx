@@ -29,6 +29,7 @@ interface PostBodyProps {
   avatar: string;
   datePublished: string;
   description: string;
+  demoVideoUrl: string
 }
 
 export default function PostBody({
@@ -41,6 +42,7 @@ export default function PostBody({
   avatar,
   datePublished,
   description,
+  demoVideoUrl
 }: PostBodyProps) {
   return (
     <div className="p-8 px-12 md:px-40 md:mt-4">
@@ -78,14 +80,13 @@ export default function PostBody({
         <button className="flex gap-1 rounded-lg bg-[#0900f9] bg-opacity-5 text-opacity-65 text-[#0900f9] px-4 py-2 font-medium items-center">Source Code <ArrowTopRightIcon className="ml-1" /></button>
 
       </div>
-      <VideoComp />
+      <VideoComp src={demoVideoUrl} />
       {/* <Image src={coverPhotoSrc} width={300} height={300} alt="cover photo" /> */}
       {/* <MDXRemote
         source={content}
         components={{ ...components, ...overrideComponents }}
       /> */}
-      <MDXRemote source={mdContent} components={{ ...markdownCompts, ...overrideComponents }} />
-
+      <MDXRemote  source={mdContent} components={{ ...markdownCompts, ...overrideComponents }} />
     </div>
   );
 }
