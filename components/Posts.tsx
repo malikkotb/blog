@@ -7,15 +7,7 @@ import useStore from "@/app/(store)/store";
 
 export default function Posts({ posts }: any) {
   const { filteredTag } = useStore();
-  const [isHovered, setIsHovered] = useState(false);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
   return (
     <div className="w-full grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
       {posts.posts
@@ -47,55 +39,30 @@ export default function Posts({ posts }: any) {
                 href={post.slug}
                 className="h-[45vh] group md:h-[65vh] flex flex-col p-2 gap-2 rounded-3xl bg-[#dddbff] bg-opacity-20 dark:bg-[#020024] dark:bg-opacity-10 hover:translate-y-[-2px] transform transition-all duration-300"
                 key={post.id}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
               >
                 <div className="justify-end flex w-full">
                   <button className="opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg bg-white text-black p-2 mt-1 mr-1">
                     <HiMiniArrowUpRight />
                   </button>
                 </div>
-                <div className="w-[25vh] md:w-[45vh] xl:w-[40vh] mx-auto my-auto">
-                  {isHovered ? (
-                    <video
-                      suppressHydrationWarning
-                      autoPlay
-                      muted
-                      loop
-                      // className="rounded-lg w-full h-full"
-                      className={`  w-full h-full rounded-lg transition-opacity duration-500 ${
-                        isHovered ? "opacity-100" : "opacity-0"
-                      }`}
-                    >
-                      <source src={demoVideo.url} />
-                    </video>
-                  ) : (
-                    <img
-                      src={coverPhoto.url}
-                      className={` w-full h-full rounded-xl object-cover transition-opacity duration-500 ${
-                        isHovered ? "opacity-0" : "opacity-100"
-                      }`}
-                      // className="w-full h-full rounded-xl object-cover"
-                      alt="description"
-                    />
-                  )}
-                </div>
-                {/* <div className="w-[25vh] md:w-[45vh] xl:w-[40vh] mx-auto my-auto">
+                <div className="group relative w-[25vh] md:w-[45vh] xl:w-[40vh] mx-auto my-auto bg-black rounded-lg">
                   <img
+                    suppressHydrationWarning
                     src={coverPhoto.url}
-                    className="w-full h-full rounded-xl object-cover"
-                    alt="description"
+                    className="w-full h-full rounded-lg object-cover transition-opacity duration-500 group-hover:opacity-0"
+                    alt="cover photo"
                   />
                   <video
                     suppressHydrationWarning
                     autoPlay
                     muted
                     loop
-                    className="rounded-lg"
+                    className="absolute inset-0 w-full h-full rounded-lg object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100"
                   >
-                    <source src={"demo.mp4"} />
+                    <source src={demoVideo.url} type="video/mp4" />
                   </video>
-                </div> */}
+                </div>
+
                 <div className="items-start flex flex-col gap-1 p-4 pb-2">
                   <div className="text-base font-medium">{title}</div>
                   <div className="flex w-full justify-between">

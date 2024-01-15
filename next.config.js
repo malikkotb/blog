@@ -3,9 +3,10 @@
  */
 const nextConfig = {
     output: 'export',
-    // images: {
-    //   unoptimized: true,
-    // },
+    // TODO: comment this for production mode
+    images: {
+      unoptimized: true,
+    },
   }
    
   module.exports = nextConfig

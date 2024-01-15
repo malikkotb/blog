@@ -79,6 +79,8 @@ const GET_POST_BY_SLUG = gql`
       demoVideo {
         url
       }
+      demoLink
+      githubLink
     }
   }
 `;
