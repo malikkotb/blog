@@ -12,6 +12,15 @@ p {
   }
 }
 
+li {
+  code {
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 4px 4px 4px 4px;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
 // @media (prefers-color-scheme: dark) {
 //   p {
 //     code {

@@ -80,13 +80,21 @@ export default function PostBody({
       <p className="pt-2 pb-4">{description}</p>
       <div className="flex gap-2">
         <a target="_blank" href={demoLink}>
-          <button className="flex gap-1 rounded-lg bg-[#0900f9] bg-opacity-5 text-opacity-65 text-[#0900f9] px-4 py-2 font-medium items-center">
+          <button
+            className="flex gap-1 rounded-lg
+          dark:bg-opacity-40 dark:text-white
+          bg-[#0900f9] bg-opacity-5 text-opacity-65 text-[#0900f9] px-4 py-2 font-medium items-center"
+          >
             Live Demo <ArrowTopRightIcon className="ml-1" />
           </button>
         </a>
 
         <a target="_blank" href={githubLink}>
-          <button className="flex gap-1 rounded-lg bg-[#0900f9] bg-opacity-5 text-opacity-65 text-[#0900f9] px-4 py-2 font-medium items-center">
+          <button
+            className="flex gap-1 rounded-lg
+                    dark:bg-opacity-40 dark:text-white
+                    bg-[#0900f9] bg-opacity-5 text-opacity-65 text-[#0900f9] px-4 py-2 font-medium items-center"
+          >
             Source Code <ArrowTopRightIcon className="ml-1" />
           </button>
         </a>

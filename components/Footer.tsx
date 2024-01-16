@@ -37,8 +37,8 @@ export default function Footer() {
             placeholder="Your email"
             className="rounded-xl border p-3 w-[30vw]"
           />
-          <button className="bg-custom-dark text-custom-dark dark:bg-custom-light dark:text-custom-light p-4 rounded-xl">
-            Submit
+          <button className="bg-black text-white dark:bg-custom-light dark:text-custom-light p-4 rounded-xl">
+            Coming Soon
           </button>
         </div>
       </div>

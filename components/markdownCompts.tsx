@@ -4,22 +4,27 @@ import dark_plus from "./themes/dark_plus.json";
 interface MDXComponentProps {
   children?: ReactNode;
 }
+BrightCode.theme = {
+  light: "github-light",
+  dark: "github-dark",
+  // using a different CSS selector:
+  // lightSelector: '[data-theme="light"]',
+  // lightSelector: 'html.light',
+};
 const CodeWithLineNumbers = ({ children, ...props }: MDXComponentProps) => {
-  // BrightCode.theme = {
-  //   dark: "github-dark",
-  //   light: "github-light",
-  // };
   return (
-    <div className="rounded-full">
-      {/* <div data-theme="light">
-          <BrightCode {...props} lineNumbers />;
-        </div> */}
-      <div data-theme="dark" className="rounded-full">
-        <BrightCode theme={dark_plus} className=" " {...props} lineNumbers>
+    <>
+      <div className="rounded-full">
+        <BrightCode className="rounded-full" {...props} lineNumbers>
           {children}
         </BrightCode>
       </div>
-    </div>
+      {/* <div data-theme="light" className="rounded-full">
+        <BrightCode className="" {...props} lineNumbers>
+          {children}
+        </BrightCode>
+      </div> */}
+    </>
   );
 };
 
@@ -48,7 +53,7 @@ const markdownCompts = {
   p: ({ children, ...props }: MDXComponentProps) => (
     <p
       {...props}
-      className="text-base leading-5 mt-[10px] mb-[30px] opacity-75"
+      className="text-base leading-7 mt-[10px] mb-[30px] opacity-75"
     >
       {children}
     </p>
@@ -63,7 +68,8 @@ const markdownCompts = {
       {...props}
       style={{ listStyleType: "none" }}
       className="list-disc list-inside my-2 p-8 rounded-lg
-      bg-[#0900f9] bg-opacity-5 text-opacity-65 
+      bg-[#0900f9] bg-opacity-5 text-opacity-65
+      
       "
     >
       {children}
@@ -72,8 +78,13 @@ const markdownCompts = {
   li: ({ children, ...props }: MDXComponentProps) => (
     <li {...props} className="ml-4 opacity-75">
       <div className="flex">
-        <span style={{ marginRight: "1ch" }} className="text-opacity-65 text-[#0900f9]">↪</span>
-        <div className="flex items-start">{children}</div>
+        <span
+          style={{ marginRight: "1ch" }}
+          className="text-opacity-65 text-[#0900f9] dark:text-custom-dark"
+        >
+          ↪
+        </span>
+        <div>{children}</div>
       </div>
     </li>
   ),
