@@ -21,6 +21,36 @@ li {
   }
 }
 
+// .glow-item {
+//   text-align: center;
+//   margin: 30px 100px;
+// }
+
+.card {
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0900f9;
+  text-align: center;
+  border-radius: 7px;
+  border: #0900f9 1px transparent;
+  cursor: pointer;
+}
+
+// .card.reactive {
+//   box-shadow: none;
+// }
+
+.reactive:hover {
+  // box-shadow: 0 0 50px 15px #0900f9;
+  box-shadow: 0 0 12.5px 3.75px rgba(9, 0, 249, 0.5);
+
+}
+
+
 // @media (prefers-color-scheme: dark) {
 //   p {
 //     code {

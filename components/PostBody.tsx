@@ -83,7 +83,8 @@ export default function PostBody({
           <button
             className="flex gap-1 rounded-lg
           dark:bg-opacity-40 dark:text-white
-          bg-[#0900f9] bg-opacity-5 text-opacity-65 text-[#0900f9] px-4 py-2 font-medium items-center"
+          bg-[#0900f9] bg-opacity-5 text-opacity-65 text-[#0900f9] px-4 py-2 font-medium items-center
+          border border-transparent hover:border-[#0900f9]"
           >
             Live Demo <ArrowTopRightIcon className="ml-1" />
           </button>
@@ -93,7 +94,8 @@ export default function PostBody({
           <button
             className="flex gap-1 rounded-lg
                     dark:bg-opacity-40 dark:text-white
-                    bg-[#0900f9] bg-opacity-5 text-opacity-65 text-[#0900f9] px-4 py-2 font-medium items-center"
+                    bg-[#0900f9] bg-opacity-5 text-opacity-65 text-[#0900f9] px-4 py-2 font-medium items-center
+                    border border-transparent hover:border-[#0900f9]"
           >
             Source Code <ArrowTopRightIcon className="ml-1" />
           </button>
