@@ -1,40 +1,17 @@
 import { ReactNode } from "react";
-import { Code as BrightCode } from "bright";
-import dark_plus from "./themes/dark_plus.json";
+import { useTheme } from "next-themes";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { docco, atelierDuneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import React from "react";
+import CustomPre from "./CustomPre";
+
 interface MDXComponentProps {
   children?: ReactNode;
 }
-BrightCode.theme = {
-  light: "github-light",
-  dark: "github-dark",
-  // using a different CSS selector:
-  // lightSelector: '[data-theme="light"]',
-  // lightSelector: 'html.light',
-};
-const CodeWithLineNumbers = ({ children, ...props }: MDXComponentProps) => {
-  return (
-    <>
-      <div className="rounded-full">
-        <BrightCode className="rounded-full" {...props} lineNumbers>
-          {children}
-        </BrightCode>
-      </div>
-      {/* <div data-theme="light" className="rounded-full">
-        <BrightCode className="" {...props} lineNumbers>
-          {children}
-        </BrightCode>
-      </div> */}
-    </>
-  );
-};
 
 const markdownCompts = {
-  pre: CodeWithLineNumbers,
-  //   code: ({ children, ...props }: MDXComponentProps) => (
-  //     <code {...props} className="bg-red-500">
-  //       {children}
-  //     </code>
-  //   ),
+  // pre: CodeWithLineNumbers,
+  pre: CustomPre,
   h1: ({ children, ...props }: MDXComponentProps) => (
     <h1 {...props} className="text-2xl font-medium">
       {children}
