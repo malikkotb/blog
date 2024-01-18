@@ -39,8 +39,12 @@ export default function CustomPre({ children, ...props }: MDXComponentProps) {
     <div className="my-6">
       <div className="flex justify-between px-2 py-1 rounded-lg rounded-b-none border-b-0 border">
         <p>page.tsx</p>
-        <button onClick={() => copyToClipboard(codeString)} className="cursor-pointer">
-          <CopyIcon className="hover:text-[#0900f9] rounded-lg card reactive hover-shadow border border-transparent hover:border-[#0900f9]" />
+        <button
+          onClick={() => copyToClipboard(codeString)}
+          className="cursor-pointer hover:text-[#0900f9] p-1 rounded-lg reactive
+          hover-shadow border border-transparent hover:border-[#0900f9]"
+        >
+          <CopyIcon />
         </button>
       </div>
       <SyntaxHighlighter
