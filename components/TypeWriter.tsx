@@ -2,7 +2,7 @@
 import { useRef } from "react";
 
 export default function TypeWriter() {
-  const topics: string[] = ["coding", "frontend", "backend", "animations"];
+  const topics: string[] = ["animations", "3D", "scroll", "design"];
   const typewriterRef = useRef<HTMLDivElement>(null);
 
   function sleep(ms: number) {

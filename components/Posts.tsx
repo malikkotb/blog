@@ -37,7 +37,7 @@ export default function Posts({ posts }: any) {
             return (
               <Link
                 href={post.slug}
-                className="h-[45vh] group md:h-[65vh] flex flex-col p-2 gap-2 rounded-3xl bg-[#dddbff] bg-opacity-20 dark:bg-[#020024] dark:bg-opacity-10 hover:translate-y-[-2px] transform transition-all duration-300"
+                className="h-[45vh] group md:h-[65vh] flex flex-col p-2 px-4 gap-2 rounded-3xl bg-[#dddbff] bg-opacity-20 dark:bg-[#020024] dark:bg-opacity-10 hover:translate-y-[-2px] transform transition-all duration-300"
                 key={post.id}
               >
                 <div className="justify-end flex w-full">
@@ -45,7 +45,8 @@ export default function Posts({ posts }: any) {
                     <HiMiniArrowUpRight />
                   </button>
                 </div>
-                <div className="group relative w-[25vh] md:w-[45vh] xl:w-[40vh] mx-auto my-auto bg-black rounded-lg">
+                {/* w-[30vh] sm:w-[20vh] md:w-[30vh] xl:w-[40vh] */}
+                <div suppressHydrationWarning className="w-full  relative mx-auto my-auto bg-black rounded-lg">
                   <img
                     suppressHydrationWarning
                     src={coverPhoto.url}
