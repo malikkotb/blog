@@ -46,7 +46,7 @@ export default function Posts({ posts }: any) {
                   </button>
                 </div>
                 {/* w-[30vh] sm:w-[20vh] md:w-[30vh] xl:w-[40vh] */}
-                <div suppressHydrationWarning className="w-full  relative mx-auto my-auto bg-black rounded-lg">
+                <div suppressHydrationWarning className="w-full  relative mx-auto my-auto  rounded-lg">
                   <img
                     suppressHydrationWarning
                     src={coverPhoto.url}
