@@ -111,6 +111,17 @@ export default function PostBody({
         source={mdContent}
         components={{ ...markdownCompts, ...overrideComponents }}
       />
+      <div className="my-6 text-lg font-medium">
+        We should have something like this:
+      </div>
+      <VideoComp src={demoVideoUrl} />
+      <div className="mt-6 text-lg font-medium">Wrapping up.</div>
+      <br />
+      <div>Quick and smooth, right?</div>
+      <br />
+      <div>Hope you liked the animation and learned something new!</div>
+      <br />
+      <div>-Malik</div>
     </div>
   );
 }
