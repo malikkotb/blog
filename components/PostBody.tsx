@@ -102,11 +102,6 @@ export default function PostBody({
         </a>
       </div>
       <VideoComp src={demoVideoUrl} />
-      {/* <Image src={coverPhotoSrc} width={300} height={300} alt="cover photo" /> */}
-      {/* <MDXRemote
-        source={content}
-        components={{ ...components, ...overrideComponents }}
-      /> */}
       <MDXRemote
         source={mdContent}
         components={{ ...markdownCompts, ...overrideComponents }}
@@ -125,3 +120,4 @@ export default function PostBody({
     </div>
   );
 }
+
