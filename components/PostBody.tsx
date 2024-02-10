@@ -4,7 +4,6 @@ import { ArrowLeftIcon, ArrowTopRightIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import VideoComp from "./VideoComp";
 import Link from "next/link";
-import { Button } from "./ui/button";
 import markdownCompts from "./markdownCompts";
 interface MDXComponentProps {
   children?: ReactNode;
