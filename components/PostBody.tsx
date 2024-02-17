@@ -6,7 +6,8 @@ import VideoComp from "./VideoComp";
 import Link from "next/link";
 import markdownCompts from "./markdownCompts";
 interface MDXComponentProps {
-  children?: ReactNode;
+  children?: ReactNode; 
+  
 }
 const convertDateFormat = (dateStr: string): string => {
   const dateObj = new Date(dateStr);
@@ -17,6 +18,7 @@ const convertDateFormat = (dateStr: string): string => {
   };
   return dateObj.toLocaleDateString("en-US", options);
 };
+
 
 
 interface PostBodyProps {
