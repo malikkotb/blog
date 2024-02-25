@@ -8,7 +8,6 @@ export default function Tag({ name }: TagProps) {
   const { setFilteredTag, filteredTag } = useStore();
 
   const highlight = () => {
-    // console.log(filteredTag);
     if (filteredTag === name) {
       return "bg-[#0900f9] bg-opacity-30";
     } 
