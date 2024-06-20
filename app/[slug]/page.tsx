@@ -11,8 +11,7 @@ export async function generateStaticParams() {
   return paths;
 }
 
-// Multiple versions of this page will be statically generated
-// using the `params` returned by `generateStaticParams`
+// Multiple versions of this page will be statically generated using the `params` returned by `generateStaticParams`
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const posts: any = await graphcms.request(GET_POST_BY_SLUG, { slug: slug });
