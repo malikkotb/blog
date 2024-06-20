@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 import Posts from "@/components/Posts";
-import Tag from "@/components/Tag";
+// import Tag from "@/components/Tag";
 import TypeWriter from "@/components/TypeWriter";
 import { GET_ALL_POSTS, GET_TAGS } from "../graphql/queries";
 import graphcms from "@/lib/client";
