@@ -18,7 +18,7 @@ export default function Footer() {
             GITHUB <ArrowTopRightIcon />
           </Link>
           <Link
-            href={"https://malikkotb.github.io/m-k.io/"}
+            href={"https://malikkotb.com"}
             target="_blank"
             className={buttonVariants({ variant: "outline" })}
           >
